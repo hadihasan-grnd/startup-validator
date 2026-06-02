@@ -1,0 +1,11 @@
+!pip install -q streamlit pyngrok
+
+!ngrok config add-authtoken "Enter ngrok auto token"
+
+import os
+from pyngrok import ngrok
+
+os.system("streamlit run app.py &")
+
+public_url = ngrok.connect(8501, proto="http")
+print("Click this link to open your app:", public_url.public_url)
